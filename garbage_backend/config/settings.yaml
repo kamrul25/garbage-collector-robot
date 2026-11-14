@@ -1,0 +1,39 @@
+# ─── Network ───────────────────────────────────────────────
+camera:
+  ip: "192.168.1.100"
+  stream_url: "http://192.168.1.100/stream"
+  resolution: [320, 240]       # QVGA
+
+devkit:
+  ip: "192.168.1.101"
+  port: 80
+  cmd_url: "http://192.168.1.101:80/cmd"
+
+# ─── AI Model ──────────────────────────────────────────────
+model:
+  path: "weights/best.pt"      # your fine-tuned YOLOv8n
+  confidence: 0.40
+  target_classes:
+    - bottle
+    - can
+    - paper
+    - plastic
+
+# ─── Decision Thresholds ───────────────────────────────────
+decision:
+  center_tolerance: 0.10       # ±10% of frame width
+  stop_distance_cm: 15
+  approach_speed: 120
+  turn_speed: 100
+  seek_speed: 80
+
+# ─── Server ────────────────────────────────────────────────
+server:
+  host: "0.0.0.0"
+  port: 8000
+  fps_limit: 10                # control loop target fps
+
+# ─── Logging ───────────────────────────────────────────────
+logging:
+  level: "INFO"
+  file: "logs/backend.log"   
